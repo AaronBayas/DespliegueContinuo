@@ -21,3 +21,22 @@ export function validarIncidencia(datos = {}) {
 
   return errores;
 }
+
+export function crearIncidencia(datos, listaActual = [], ahora = new Date()) {
+  const errores = validarIncidencia(datos);
+  if (errores.length > 0) {
+    const error = new Error(errores.join(' '));
+    error.errores = errores;
+    throw error;
+  }
+  const siguienteId = listaActual.reduce((max, inc) => Math.max(max, inc.id), 0) + 1;
+  return {
+    id: siguienteId,
+    titulo: limpiar(datos.titulo),
+    descripcion: limpiar(datos.descripcion),
+    reportadoPor: limpiar(datos.reportadoPor),
+    prioridad: datos.prioridad,
+    estado: datos.estado,
+    fecha: ahora.toISOString(),
+  };
+}
