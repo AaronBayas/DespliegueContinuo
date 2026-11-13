@@ -50,7 +50,19 @@
     </section>
 
     <section class="tarjeta" aria-labelledby="titulo-lista">
-      <h2 id="titulo-lista">Incidencias registradas</h2>
+      <div class="cabecera-lista">
+        <h2 id="titulo-lista">Incidencias registradas</h2>
+        <div>
+          <label for="filtro-estado">Filtrar por estado</label>
+          <select id="filtro-estado">
+            <option selected>Todas</option>
+            <option>Abierta</option>
+            <option>En progreso</option>
+            <option>Cerrada</option>
+          </select>
+        </div>
+      </div>
+      <p id="contador" class="contador"></p>
       <div class="tabla-scroll">
         <table>
           <thead>
