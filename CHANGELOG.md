@@ -2,6 +2,14 @@
 
 Todos los cambios relevantes del proyecto se registran aquí. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.1.1] - 2026-11-12
+
+### Corregido
+- Después de registrar una incidencia, la tabla mostraba todas las incidencias aunque el filtro de estado siguiera seleccionado. Ahora se respeta el filtro activo y el contador muestra la cifra correcta (#7).
+
+### Agregado
+- Prueba de regresión `tests/registro.test.js` que cubre el caso del issue #7.
+
 ## [1.1.0] - 2026-11-12
 
 ### Agregado
