@@ -42,6 +42,16 @@ function renderizar(lista) {
   mensajeVacio.hidden = lista.length > 0;
 }
 
+function mostrarErrores(mensajes) {
+  cajaErrores.replaceChildren();
+  mensajes.forEach((m) => {
+    const li = document.createElement('li');
+    li.textContent = m;
+    cajaErrores.appendChild(li);
+  });
+  cajaErrores.hidden = mensajes.length === 0;
+}
+
 formulario.addEventListener('submit', (evento) => {
   evento.preventDefault();
   const datos = Object.fromEntries(new FormData(formulario));
@@ -49,10 +59,11 @@ formulario.addEventListener('submit', (evento) => {
     const nueva = crearIncidencia(datos, incidencias);
     incidencias = [...incidencias, nueva];
     guardarIncidencias(incidencias);
+    mostrarErrores([]);
     formulario.reset();
     renderizar(incidencias);
   } catch (error) {
-    console.error(error);
+    mostrarErrores(error.errores ?? [error.message]);
   }
 });
 
