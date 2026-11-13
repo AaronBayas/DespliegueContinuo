@@ -47,6 +47,21 @@
         <button type="submit">Registrar incidencia</button>
       </form>
     </section>
+
+    <section class="tarjeta" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Incidencias registradas</h2>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Título</th><th>Descripción</th><th>Prioridad</th>
+              <th>Estado</th><th>Reportado por</th><th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="lista-incidencias"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <footer class="pie">Sistema de Registro de Incidencias · <span id="version">v1.0.0</span></footer>
