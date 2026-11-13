@@ -53,6 +53,7 @@ export function registrarIncidencia(lista, datos, estadoFiltro = 'Todas', ahora 
   const actualizada = [...lista, nueva];
   return {
     lista: actualizada,
-    visibles: actualizada,
+    // v1.1.1 (issue #7): se respeta el filtro activo después de registrar
+    visibles: filtrarPorEstado(actualizada, estadoFiltro),
   };
 }
