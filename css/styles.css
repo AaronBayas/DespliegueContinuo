@@ -42,3 +42,37 @@ body {
   padding: 1.25rem;
 }
 .tarjeta h2 { margin-top: 0; color: var(--azul); font-size: 1.2rem; }
+
+label { display: block; font-weight: 600; margin: .75rem 0 .25rem; font-size: .9rem; }
+input, textarea, select {
+  width: 100%;
+  padding: .55rem .65rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font: inherit;
+}
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--azul-claro); border-color: transparent; }
+
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+button {
+  margin-top: 1rem;
+  background: var(--azul-claro);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: .65rem 1.2rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: var(--azul); }
+
+.errores {
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  color: var(--rojo);
+  border-radius: 6px;
+  padding: .6rem 1.5rem;
+  margin: 1rem 0 0;
+}
