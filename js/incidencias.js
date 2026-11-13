@@ -40,3 +40,9 @@ export function crearIncidencia(datos, listaActual = [], ahora = new Date()) {
     fecha: ahora.toISOString(),
   };
 }
+
+// v1.1.0: filtro por estado
+export function filtrarPorEstado(lista, estado) {
+  if (!estado || estado === 'Todas') return [...lista];
+  return lista.filter((inc) => inc.estado === estado);
+}
