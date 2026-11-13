@@ -1,0 +1,15 @@
+{
+  "name": "sistema-registro-incidencias",
+  "version": "1.0.0",
+  "description": "Aplicación web para registrar y consultar incidencias reportadas por usuarios.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "validar": "node scripts/validar.js",
+    "start": "python3 -m http.server 8080"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
