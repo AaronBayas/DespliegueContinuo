@@ -13,6 +13,40 @@
   </header>
 
   <main class="contenedor">
+    <section class="tarjeta" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Nueva incidencia</h2>
+      <form id="form-incidencia" novalidate>
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" type="text" maxlength="80" placeholder="Ej.: Error al iniciar sesión" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="3" placeholder="Describa qué ocurrió y cómo reproducirlo" required></textarea>
+
+        <label for="reportadoPor">Reportado por</label>
+        <input id="reportadoPor" name="reportadoPor" type="text" placeholder="Nombre del usuario" required>
+
+        <div class="fila">
+          <div>
+            <label for="prioridad">Prioridad</label>
+            <select id="prioridad" name="prioridad">
+              <option>Baja</option>
+              <option selected>Media</option>
+              <option>Alta</option>
+            </select>
+          </div>
+          <div>
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado">
+              <option selected>Abierta</option>
+              <option>En progreso</option>
+              <option>Cerrada</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit">Registrar incidencia</button>
+      </form>
+    </section>
   </main>
 
   <footer class="pie">Sistema de Registro de Incidencias · <span id="version">v1.0.0</span></footer>
