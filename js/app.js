@@ -1,10 +1,12 @@
-// Interfaz: conecta el formulario y la tabla con la lógica.
-import { crearIncidencia } from './incidencias.js';
+// Interfaz: conecta el formulario, el filtro y la tabla con la lógica.
+import { registrarIncidencia, filtrarPorEstado } from './incidencias.js';
 import { cargarIncidencias, guardarIncidencias } from './almacenamiento.js';
 
 const formulario = document.getElementById('form-incidencia');
 const cajaErrores = document.getElementById('errores');
 const cuerpoTabla = document.getElementById('lista-incidencias');
+const filtroEstado = document.getElementById('filtro-estado');
+const contador = document.getElementById('contador');
 const mensajeVacio = document.getElementById('mensaje-vacio');
 
 let incidencias = cargarIncidencias();
@@ -40,6 +42,7 @@ function renderizar(lista) {
     cuerpoTabla.appendChild(fila);
   });
   mensajeVacio.hidden = lista.length > 0;
+  contador.textContent = `Mostrando ${lista.length} de ${incidencias.length} incidencias`;
 }
 
 function mostrarErrores(mensajes) {
@@ -56,15 +59,19 @@ formulario.addEventListener('submit', (evento) => {
   evento.preventDefault();
   const datos = Object.fromEntries(new FormData(formulario));
   try {
-    const nueva = crearIncidencia(datos, incidencias);
-    incidencias = [...incidencias, nueva];
+    const resultado = registrarIncidencia(incidencias, datos, filtroEstado.value);
+    incidencias = resultado.lista;
     guardarIncidencias(incidencias);
     mostrarErrores([]);
     formulario.reset();
-    renderizar(incidencias);
+    renderizar(resultado.visibles);
   } catch (error) {
     mostrarErrores(error.errores ?? [error.message]);
   }
 });
 
-renderizar(incidencias);
+filtroEstado.addEventListener('change', () => {
+  renderizar(filtrarPorEstado(incidencias, filtroEstado.value));
+});
+
+renderizar(filtrarPorEstado(incidencias, filtroEstado.value));

@@ -2,6 +2,14 @@
 
 Todos los cambios relevantes del proyecto se registran aquí. El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.1.0] - 2026-11-12
+
+### Agregado
+- Selector "Filtrar por estado" con las opciones Todas, Abierta, En progreso y Cerrada.
+- Funciones `filtrarPorEstado` y `registrarIncidencia` en `js/incidencias.js`.
+- Contador "Mostrando X de Y incidencias".
+- Pruebas unitarias del filtro.
+
 ## [1.0.0] - 2026-11-12
 
 ### Agregado
