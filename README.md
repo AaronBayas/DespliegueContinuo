@@ -4,6 +4,10 @@ Aplicación web sencilla para registrar las incidencias que reportan los usuario
 
 Proyecto académico de la asignatura **Gestión de la Configuración del Software** (Unidad 3, Tema 3: Despliegue continuo).
 
+## Aplicación publicada
+
+https://aaronbayas.github.io/DespliegueContinuo/
+
 ## Funcionalidades por versión
 
 | Versión | Cambios |
@@ -46,6 +50,15 @@ Requiere Node.js 20 o superior.
 npm run validar   # revisa archivos, enlaces y coherencia de versión
 npm test          # ejecuta las pruebas unitarias
 ```
+
+## Despliegue continuo
+
+Cada push a `main` ejecuta el workflow `.github/workflows/deploy.yml`:
+
+1. **validar**: corre `npm run validar` y `npm test`.
+2. **desplegar**: si la validación pasa, publica `index.html`, `css/` y `js/` en GitHub Pages.
+
+En los pull requests solo se ejecuta la validación.
 
 ## Flujo de trabajo del equipo
 

@@ -1,0 +1,65 @@
+name: CI/CD - Validar y desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    name: Validar aplicación
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v6
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Validar estructura y versión
+        run: npm run validar
+
+      - name: Ejecutar pruebas unitarias
+        run: npm test
+
+  desplegar:
+    name: Desplegar en GitHub Pages
+    needs: validar
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v6
+
+      - name: Preparar carpeta del sitio
+        run: |
+          mkdir _site
+          cp -r index.html css js _site/
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir artefacto del sitio
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
