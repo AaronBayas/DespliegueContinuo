@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Registro de Incidencias</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1>Sistema de Registro de Incidencias</h1>
+    <p>Registre los problemas reportados por los usuarios y consulte su estado.</p>
+  </header>
+
+  <main class="contenedor">
+    <section class="tarjeta" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Nueva incidencia</h2>
+      <form id="form-incidencia" novalidate>
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" type="text" maxlength="80" placeholder="Ej.: Error al iniciar sesión" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="3" placeholder="Describa qué ocurrió y cómo reproducirlo" required></textarea>
+
+        <label for="reportadoPor">Reportado por</label>
+        <input id="reportadoPor" name="reportadoPor" type="text" placeholder="Nombre del usuario" required>
+
+        <div class="fila">
+          <div>
+            <label for="prioridad">Prioridad</label>
+            <select id="prioridad" name="prioridad">
+              <option>Baja</option>
+              <option selected>Media</option>
+              <option>Alta</option>
+            </select>
+          </div>
+          <div>
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado">
+              <option selected>Abierta</option>
+              <option>En progreso</option>
+              <option>Cerrada</option>
+            </select>
+          </div>
+        </div>
+
+        <ul id="errores" class="errores" hidden></ul>
+        <button type="submit">Registrar incidencia</button>
+      </form>
+    </section>
+
+    <section class="tarjeta" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Incidencias registradas</h2>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Título</th><th>Descripción</th><th>Prioridad</th>
+              <th>Estado</th><th>Reportado por</th><th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="lista-incidencias"></tbody>
+        </table>
+      </div>
+      <p id="mensaje-vacio" class="vacio">No hay incidencias para mostrar.</p>
+    </section>
+  </main>
+
+  <footer class="pie">Sistema de Registro de Incidencias · <span id="version">v1.0.0</span></footer>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
