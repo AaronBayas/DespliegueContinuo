@@ -46,3 +46,13 @@ export function filtrarPorEstado(lista, estado) {
   if (!estado || estado === 'Todas') return [...lista];
   return lista.filter((inc) => inc.estado === estado);
 }
+
+// v1.1.0: registra una incidencia y devuelve la lista completa y la vista filtrada
+export function registrarIncidencia(lista, datos, estadoFiltro = 'Todas', ahora = new Date()) {
+  const nueva = crearIncidencia(datos, lista, ahora);
+  const actualizada = [...lista, nueva];
+  return {
+    lista: actualizada,
+    visibles: actualizada,
+  };
+}
