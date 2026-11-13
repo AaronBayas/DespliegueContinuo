@@ -76,3 +76,23 @@ button:hover { background: var(--azul); }
   padding: .6rem 1.5rem;
   margin: 1rem 0 0;
 }
+
+.tabla-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { text-align: left; padding: .6rem; border-bottom: 1px solid var(--borde); vertical-align: top; }
+th { background: #eef2f6; color: var(--azul); }
+
+.badge { display: inline-block; padding: .15rem .55rem; border-radius: 999px; font-size: .8rem; font-weight: 600; white-space: nowrap; }
+.estado-abierta { background: #fef3f2; color: var(--rojo); }
+.estado-en-progreso { background: #fffaeb; color: var(--ambar); }
+.estado-cerrada { background: #ecfdf3; color: var(--verde); }
+.prioridad-alta { background: var(--rojo); color: #fff; }
+.prioridad-media { background: #fdb022; color: #3d2600; }
+.prioridad-baja { background: #d1e9ff; color: #194185; }
+
+.vacio { text-align: center; color: #7b8794; padding: 1rem 0; }
+.pie { text-align: center; padding: 1rem; color: #7b8794; font-size: .85rem; }
+
+@media (max-width: 600px) {
+  .fila { grid-template-columns: 1fr; }
+}
