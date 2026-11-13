@@ -1,0 +1,36 @@
+name: CI/CD - Validar y desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    name: Validar aplicación
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v6
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Validar estructura y versión
+        run: npm run validar
+
+      - name: Ejecutar pruebas unitarias
+        run: npm test
