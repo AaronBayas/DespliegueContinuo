@@ -13,6 +13,7 @@ https://aaronbayas.github.io/DespliegueContinuo/
 | Versión | Cambios |
 |---------|---------|
 | v1.0.0 | Registro de incidencias con validación y listado en tabla |
+| v1.1.0 | Filtro de incidencias por estado (Abierta, En progreso, Cerrada) |
 
 ## Estructura
 
@@ -75,4 +76,4 @@ En los pull requests solo se ejecuta la validación.
 | Jefferson Antonio Zambrano Jama | @Ing-Jeff-Zambrano | Lógica de registro y pruebas |
 | Aaron Alejandro Bayas Caicedo | @AaronBayas | Formulario HTML |
 | Jean Suarez Acevedo | @jeandaly20 | Estilos y listado de incidencias |
-| Mayerly Anabela Piloso Muñoz | @Piloso-Mayerly | Filtro por estado |
+| Mayerly Anabela Piloso Muñoz | @Piloso-Mayerly | Filtro por estado (v1.1.0) |
